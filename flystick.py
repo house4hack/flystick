@@ -42,7 +42,7 @@ except (ImportError, IOError) as e:
 _running = False
 
 _output = ()
-
+_first_time = True
 
 def render():
     # LED check
@@ -76,7 +76,7 @@ def shutdown(signum, frame):
 
 def main():
     global _output
-
+    global _first_time
     pygame.init()
 
     # Reading only "clicks" via events. These are used for advanced
@@ -121,6 +121,16 @@ def main():
         # tuple to enforce immutability
         _output = tuple(max(min(ch((clicks, hats)), 1.), -1.)
                         for ch in CHANNELS)
+
+        if _output[3] < -0.99:
+            _first_time = False
+
+	if _first_time:
+           _output =  (_output[0],_output[1], _output[2], -1.0, _output[4],_output[5],_output[6],_output[7])
+
+
+
+        #print(_output)
 
         if _output == prev:
             # do nothing
