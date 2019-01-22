@@ -123,9 +123,9 @@ def main():
                         for ch in CHANNELS)
 
         if _output[3] < -0.99:
-            _first_time = False
+           _first_time = False
 
-	if _first_time:
+        if _first_time:
            _output =  (_output[0],_output[1], _output[2], -1.0, _output[4],_output[5],_output[6],_output[7])
 
 
@@ -158,7 +158,9 @@ def main():
 
         else:
             # debugging
-            print str(_output)
+            #print str(_output)
+            pass
+
 
         prev = _output
 
