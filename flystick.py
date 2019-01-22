@@ -23,6 +23,7 @@ import pygame
 import signal
 import threading
 import time
+from gpiozero import RGBLED
 
 try:
     import pigpio
@@ -39,10 +40,14 @@ except (ImportError, IOError) as e:
     scrollphat = None
 
 
+rgb_led = RGBLED(20,21,26)
+
 _running = False
 
 _output = ()
 _first_time = True
+
+rgb_led.color = (1,0,0)
 
 def render():
     # LED check
@@ -124,6 +129,7 @@ def main():
 
         if _output[3] < -0.99:
            _first_time = False
+           rgb_led.color = (0,0,1)
 
         if _first_time:
            _output =  (_output[0],_output[1], _output[2], -1.0, _output[4],_output[5],_output[6],_output[7])
