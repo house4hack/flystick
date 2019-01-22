@@ -19,13 +19,13 @@ PPM_OUTPUT_PIN = 18
 # Output (PPM) channels.
 CHANNELS = (
     # channel 1: aileron 
-    stick.axis(0)+0.31,  #+ ail_trim * 0.5,
+    stick.axis(0),  #+ ail_trim * 0.5,
     # a more elaborate example with reverse, offset, weight and trim:
     #(-stick.axis(0) + 0.1) * 0.7 + ail_trim * 0.5,
     # channel 2: elevator (reversed)
-    -stick.axis(1) + 0.31,
+    -stick.axis(1),
     # channel 3: rudder (reversed)
-    stick.axis(2)+0.31,
+    stick.axis(2),
     # channel 4: throttle
     -stick.axis(3),
     # channel 5: not used
